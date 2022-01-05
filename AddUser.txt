@@ -1,82 +1,30 @@
-''*****************************************************************************
+'' *****************************************************************************
 
-'' ABC Automated Testing
-'' Copyright (c) 2009 ABC
-'' All Rights Reserved Worldwide
-'' Unauthorized Duplication or Distribution Prohibited
-'' *****************************************************************************
-'' FILENAME: adduser
-'' *****************************************************************************
-'' ABOUT THIS FILE 
+'' ABOUT THIS FILE
 
 '' AUTHOR IDENTITY:
+'' Initials Name/Company
 
-'' Initials		Name/Company
-'' --------		-----------------------------------------
-'' rw 			Rick Wagonner ABC INC
+'' -------- -----------------------------------------
 
+'' rw Rick Wagonner ABC INC
 '' REVISION HISTORY:
+'' Date/Initials Comments
 
-'' Date/Initials	Comments
-'' ---------		-------------------------------
+'' --------- -------------------------------
+'' rw Created for LoanApp 2.1
 
-'' 02/20/2019  rw	Created for LoanApp 2.1
+''*****************************************
 
+''SCRIPT
 
-'enter branch name 
-Browser("Loan Management System").Page("Loan Management System").WebEdit("j_branch").Set "Budapest"
+''Test cases for phase 1
 
-'enter branch admin username
-Browser("Loan Management System").Page("Loan Management System").WebEdit("j_username").Set "admin"
+''Valid input
+AddUser "dsmith", "password", "Peter", "Smith", "ABC", "416-456-0000", "jsmith@sample.com"
 
-'enter branch admin password
-Browser("Loan Management System").Page("Loan Management System").WebEdit("j_password").SetSecure "4abe43b590ff972f24af884512fc"
+''Invalid input - missing Username
+AddUser "", "password", "Ron", "Smith", "ABC", "416-456-0000", "rsmith@sample.com"
 
-'click button 'Login'
-Browser("Loan Management System").Page("Loan Management System").WebButton("Login").Click
-
-Wait (15)
-
-'click button 'Users' in main menu
-Browser("Loan Management System").Page("Loan Management System_2").WebButton("Users").Click
-
-Wait (5)
-
-'click  menu 'Action'
-Browser("Loan Management System").Page("Loan Management System_2").WebButton("Action").Click
-
-
-'click 'AddUser' menu item
-Browser("Loan Management System").Page("Loan Management System_2").Link("Add User").Click
-
-Wait (5)
-
-'enter username
-Browser("Loan Management System").Page("Loan Management System_2").WebEdit("Username").Set "user"
-
-'enter user 's password
-Browser("Loan Management System").Page("Loan Management System_2").WebEdit("Password").SetSecure "4abe43fc5d8a084843abb04db5c44d711df82ecd671e"
-
-'enter user's first name
-Browser("Loan Management System").Page("Loan Management System_2").WebEdit("FirstName").Set "John"
-
-'enter user's last name
-Browser("Loan Management System").Page("Loan Management System_2").WebEdit("LastName").Set "Smith"
-
-'enter company name
-Browser("Loan Management System").Page("Loan Management System_2").WebEdit("Company").Set "ABC ltd"
-
-'enter phone
-Browser("Loan Management System").Page("Loan Management System_2").WebEdit("Phone").Set "625-789-1234"
-
-'enter email
-Browser("Loan Management System").Page("Loan Management System_2").WebEdit("Email").Set "jsmith@sample.com"
-
-'click button 'Save'
-Browser("Loan Management System").Page("Loan Management System_2").WebButton("Save").Click
-
-'validate user was added succesfully
-Browser("Loan Management System_3").Page("Loan Management System_3").WebElement("user").Check CheckPoint("user")
-
-'click button 'Logout'
-Browser("Loan Management System_3").Page("Loan Management System_3").WebButton("Logout").Click
+''Invalid input - missing password
+AddUser "rnmith", "", "Ron", "Smith", "ABC", "416-456-0000", "rsmith@sample.com"
