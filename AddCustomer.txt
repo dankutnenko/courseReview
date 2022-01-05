@@ -1,0 +1,25 @@
+'*****************************************************************************
+'' ABC Automated Testing
+'' Copyright (c) 2013 ABC
+'' All Rights Reserved Worldwide
+'' Unauthorised Duplication or Distribution is Prohibited
+'' ***************************************************************************
+'' FILENAME: AddCustomer1
+'' ***************************************************************************
+'' ABOUT THIS FILE 
+'' AUTHOR IDENTITY:
+'' Initials					Name/Company
+'' --------					--------------------------------------------
+'' DK						Danylo Kutnenko ABC INC
+'' Date/Initials			Comments
+'' --------					--------------------------------------------
+'' 11/07/2020 DK			Created for Loan App 2.1
+
+''Valid input
+AddCustomer "Brad", "Pitt", "1100 Sunset Blvd", "Hollywood", "CA", "98286"
+
+''Invalid input - missing FirstName
+AddCustomer "", "Pitt", "1100 Sunset Blvd", "Hollywood", "CA", "98286"
+
+''Invalid input - missing LastName
+AddCustomer "Brad", "", "1100 Sunset Blvd", "Hollywood", "CA", "98286"
